@@ -1,1 +1,143 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reefscape Scouting Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #00695c;
+    }
+    form {
+      background-color: #ffffff;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .checkbox-group label {
+      font-weight: normal;
+    }
+    button {
+      background-color: #00796b;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #004d40;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>FRC Reefscape Scouting Form</h1>
+
+  <form action="#" method="POST">
+    
+    <div class="form-group">
+      <label for="scoutName">Scout Name</label>
+      <input type="text" id="scoutName" name="scoutName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="matchNumber">Match Number</label>
+      <input type="number" id="matchNumber" name="matchNumber" required>
+    </div>
+
+    <div class="form-group">
+      <label for="teamNumber">Team Number</label>
+      <input type="number" id="teamNumber" name="teamNumber" required>
+    </div>
+
+    <div class="form-group">
+      <label for="autoCoral">Auto Coral Scored</label>
+      <input type="number" id="autoCoral" name="autoCoral" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label for="autoAlgae">Auto Algae Scored</label>
+      <input type="number" id="autoAlgae" name="autoAlgae" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label for="autoLeave">Auto Leave Starting Zone?</label>
+      <select id="autoLeave" name="autoLeave" required>
+        <option value="">Select...</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="teleopCoral">Teleop Coral Scored</label>
+      <input type="number" id="teleopCoral" name="teleopCoral" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label for="teleopAlgae">Teleop Algae Scored</label>
+      <input type="number" id="teleopAlgae" name="teleopAlgae" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label>Scoring Levels</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="scoringLevels" value="L1"> L1</label>
+        <label><input type="checkbox" name="scoringLevels" value="L2"> L2</label>
+        <label><input type="checkbox" name="scoringLevels" value="L3"> L3</label>
+        <label><input type="checkbox" name="scoringLevels" value="L4"> L4</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="endgame">Endgame Action</label>
+      <select id="endgame" name="endgame" required>
+        <option value="">Select...</option>
+        <option value="Docked">Docked</option>
+        <option value="Parked">Parked</option>
+        <option value="Failed Attempt">Failed Attempt</option>
+        <option value="No Attempt">No Attempt</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Additional Notes</label>
+      <textarea id="notes" name="notes" rows="4"></textarea>
+    </div>
+
+    <button type="submit">Submit Scouting Data</button>
+  </form>
+
+</body>
+</html>
