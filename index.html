@@ -55,23 +55,6 @@
     .button-group button:hover {
       background-color: #004d40;
     }
-    .score-value {
-      font-size: 20px;
-      margin: 0 10px;
-    }
-    button {
-      background-color: #00796b;
-      color: #fff;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #004d40;
-    }
     .hidden {
       display: none;
     }
@@ -129,19 +112,34 @@
     <div class="form-group">
       <label>Scoring Levels</label>
 
-      <label for="L1">L1 (24 levels)</label>
+      <label for="L1">L1</label>
       <div class="button-group">
-        <button type="button" onclick="adjustScore('L1', -1)">-</button>
-        <span class="score-value" id="L1Value">0</span>
-        <button type="button" onclick="adjustScore('L1', 1)">+</button>
+        <button type="button" onclick="changeScore('L1', -1)">-</button>
+        <input type="number" id="L1" name="L1" value="0" readonly>
+        <button type="button" onclick="changeScore('L1', 1)">+</button>
       </div>
 
-      <label for="L2">L2 (12 levels)</label>
+      <label for="L2">L2</label>
       <div class="button-group">
-        <button type="button" onclick="adjustScore('L2', -1)">-</button>
-        <span class="score-value" id="L2Value">0</span>
-        <button type="button" onclick="adjustScore('L2', 1)">+</button>
+        <button type="button" onclick="changeScore('L2', -1)">-</button>
+        <input type="number" id="L2" name="L2" value="0" readonly>
+        <button type="button" onclick="changeScore('L2', 1)">+</button>
       </div>
+
+      <label for="L3">L3</label>
+      <div class="button-group">
+        <button type="button" onclick="changeScore('L3', -1)">-</button>
+        <input type="number" id="L3" name="L3" value="0" readonly>
+        <button type="button" onclick="changeScore('L3', 1)">+</button>
+      </div>
+
+      <label for="L4">L4</label>
+      <div class="button-group">
+        <button type="button" onclick="changeScore('L4', -1)">-</button>
+        <input type="number" id="L4" name="L4" value="0" readonly>
+        <button type="button" onclick="changeScore('L4', 1)">+</button>
+      </div>
+
     </div>
 
     <div class="form-group">
@@ -193,18 +191,19 @@
       });
     });
 
-    function adjustScore(level, change) {
-      const scoreElement = document.getElementById(level + 'Value');
-      let score = parseInt(scoreElement.textContent);
-      score += change;
-      scoreElement.textContent = score < 0 ? 0 : score; // Prevent negative scores
-    }
-
     function startNewForm() {
       form.reset();
-      document.querySelectorAll('.score-value').forEach(el => el.textContent = '0');
       thankYou.classList.add('hidden');
       form.classList.remove('hidden');
+    }
+
+    function changeScore(level, change) {
+      const input = document.getElementById(level);
+      let currentValue = parseInt(input.value);
+      currentValue += change;
+      if (currentValue >= 0) {
+        input.value = currentValue;
+      }
     }
   </script>
 
