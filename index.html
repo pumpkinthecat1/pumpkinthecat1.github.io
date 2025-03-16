@@ -1,186 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reefscape Scouting Form</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #e0f7fa;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #00695c;
-    }
-    form, .thank-you {
-      background-color: #ffffff;
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-    input[type="text"], input[type="number"], select, textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-    .checkbox-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .checkbox-group label {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 16px;
-    }
-    button {
-      background-color: #00796b;
-      color: #fff;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #004d40;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>FRC Reefscape Scouting Form</h1>
-
-  <form id="scoutingForm">
-    <div class="form-group">
-      <label for="scoutName">Scout Name</label>
-      <input type="text" id="scoutName" name="scoutName" required>
+<div class="form-group">
+  <label>Scoring Levels</label>
+  
+  <label for="L1">L1 (24 checkboxes)</label>
+  <div class="checkbox-group">
+    <!-- 24 checkboxes for L1 -->
+    <div class="checkbox-row">
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_1"> 1</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_2"> 2</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_3"> 3</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_4"> 4</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_5"> 5</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_6"> 6</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_7"> 7</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_8"> 8</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_9"> 9</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_10"> 10</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_11"> 11</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_12"> 12</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_13"> 13</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_14"> 14</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_15"> 15</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_16"> 16</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_17"> 17</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_18"> 18</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_19"> 19</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_20"> 20</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_21"> 21</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_22"> 22</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_23"> 23</label>
+      <label><input type="checkbox" name="scoringLevelsL1" value="L1_24"> 24</label>
     </div>
-
-    <div class="form-group">
-      <label for="matchNumber">Match Number</label>
-      <input type="number" id="matchNumber" name="matchNumber" required>
+  </div>
+  
+  <label for="L2">L2 (12 checkboxes)</label>
+  <div class="checkbox-group">
+    <!-- 12 checkboxes for L2 -->
+    <div class="checkbox-row">
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_1"> 1</label>
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_2"> 2</label>
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_3"> 3</label>
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_4"> 4</label>
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_5"> 5</label>
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_6"> 6</label>
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_7"> 7</label>
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_8"> 8</label>
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_9"> 9</label>
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_10"> 10</label>
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_11"> 11</label>
+      <label><input type="checkbox" name="scoringLevelsL2" value="L2_12"> 12</label>
     </div>
-
-    <div class="form-group">
-      <label for="teamNumber">Team Number</label>
-      <input type="number" id="teamNumber" name="teamNumber" required>
-    </div>
-
-    <div class="form-group">
-      <label for="autoCoral">Auto Coral Scored</label>
-      <input type="number" id="autoCoral" name="autoCoral" min="0" required>
-    </div>
-
-    <div class="form-group">
-      <label for="autoAlgae">Auto Algae Scored</label>
-      <input type="number" id="autoAlgae" name="autoAlgae" min="0" required>
-    </div>
-
-    <div class="form-group">
-      <label for="autoLeave">Auto Leave Starting Zone?</label>
-      <select id="autoLeave" name="autoLeave" required>
-        <option value="">Select...</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="teleopCoral">Teleop Coral Scored</label>
-      <input type="number" id="teleopCoral" name="teleopCoral" min="0" required>
-    </div>
-
-    <div class="form-group">
-      <label for="teleopAlgae">Teleop Algae Scored</label>
-      <input type="number" id="teleopAlgae" name="teleopAlgae" min="0" required>
-    </div>
-
-    <div class="form-group">
-      <label>Scoring Levels</label>
-      <div class="checkbox-group">
-        <label><input type="checkbox" name="scoringLevels" value="None"> None</label>
-        <label><input type="checkbox" name="scoringLevels" value="L1"> L1</label>
-        <label><input type="checkbox" name="scoringLevels" value="L2"> L2</label>
-        <label><input type="checkbox" name="scoringLevels" value="L3"> L3</label>
-        <label><input type="checkbox" name="scoringLevels" value="L4"> L4</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="endgame">Endgame Action</label>
-      <select id="endgame" name="endgame" required>
-        <option value="">Select...</option>
-        <option value="Deep Climb">Deep Climb</option>
-        <option value="Shallow Climb">Shallow Climb</option>
-        <option value="Dock">Dock</option>
-        <option value="No Attempt">No Attempt</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="notes">Additional Notes</label>
-      <textarea id="notes" name="notes" rows="4"></textarea>
-    </div>
-
-    <button type="submit">Submit Scouting Data</button>
-  </form>
-
-  <div class="thank-you hidden" id="thankYou">
-    <h2>Thank you for submitting!</h2>
-    <button onclick="startNewForm()">Submit Another Form</button>
   </div>
 
-  <script>
-    const form = document.getElementById('scoutingForm');
-    const thankYou = document.getElementById('thankYou');
+  <label for="L3">L3 (12 checkboxes)</label>
+  <div class="checkbox-group">
+    <!-- 12 checkboxes for L3 -->
+    <div class="checkbox-row">
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_1"> 1</label>
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_2"> 2</label>
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_3"> 3</label>
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_4"> 4</label>
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_5"> 5</label>
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_6"> 6</label>
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_7"> 7</label>
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_8"> 8</label>
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_9"> 9</label>
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_10"> 10</label>
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_11"> 11</label>
+      <label><input type="checkbox" name="scoringLevelsL3" value="L3_12"> 12</label>
+    </div>
+  </div>
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      // Send form data to Google Sheets (we'll handle that next)
-      const formData = new FormData(form);
-
-      fetch('https://script.google.com/macros/s/AKfycbyL7y4sax0xwCjesyIN6YVFhUmvdmJTBcK8Ef2tZFn-sdxzluaIiu8ygYBcC0rLjSFWDA/exec', {
-        method: 'POST',
-        body: formData
-      }).then(response => {
-        if (response.ok) {
-          form.classList.add('hidden');
-          thankYou.classList.remove('hidden');
-        } else {
-          alert('Submission failed!');
-        }
-      }).catch(err => {
-        alert('Error: ' + err);
-      });
-    });
-
-    function startNewForm() {
-      form.reset();
-      thankYou.classList.add('hidden');
-      form.classList.remove('hidden');
-    }
-  </script>
-
-</body>
-</html>
+  <label for="L4">L4 (12 checkboxes)</label>
+  <div class="checkbox-group">
+    <!-- 12 checkboxes for L4 -->
+    <div class="checkbox-row">
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_1"> 1</label>
+      <
