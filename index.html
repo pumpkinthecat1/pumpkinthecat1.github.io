@@ -37,31 +37,27 @@
       border: 1px solid #ccc;
       font-size: 16px;
     }
-    .counter-group {
+    .button-group {
       display: flex;
-      align-items: center;
+      justify-content: center;
       gap: 10px;
+      align-items: center;
     }
-    .counter-btn {
+    .button-group button {
+      padding: 10px 20px;
+      font-size: 16px;
       background-color: #00796b;
       color: white;
-      font-size: 18px;
-      width: 40px;
-      height: 40px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
-    .counter-btn:hover {
+    .button-group button:hover {
       background-color: #004d40;
     }
-    input[type="number"] {
-      width: 60px;
-      padding: 8px;
-      text-align: center;
-      font-size: 18px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+    .score-value {
+      font-size: 20px;
+      margin: 0 10px;
     }
     button {
       background-color: #00796b;
@@ -75,6 +71,9 @@
     }
     button:hover {
       background-color: #004d40;
+    }
+    .hidden {
+      display: none;
     }
   </style>
 </head>
@@ -130,31 +129,84 @@
     <div class="form-group">
       <label>Scoring Levels</label>
 
-      <label for="None">None</label>
-      <input type="checkbox" id="None" name="scoringLevelsNone" value="None">
-
-      <label for="L1">L1</label>
-      <div class="counter-group">
-        <button type="button" class="counter-btn" onclick="updateCount('L1', -1)">-</button>
-        <input type="number" id="L1" name="scoringLevelsL1" value="0" min="0" readonly>
-        <button type="button" class="counter-btn" onclick="updateCount('L1', 1)">+</button>
+      <label for="L1">L1 (24 levels)</label>
+      <div class="button-group">
+        <button type="button" onclick="adjustScore('L1', -1)">-</button>
+        <span class="score-value" id="L1Value">0</span>
+        <button type="button" onclick="adjustScore('L1', 1)">+</button>
       </div>
 
-      <label for="L2">L2</label>
-      <div class="counter-group">
-        <button type="button" class="counter-btn" onclick="updateCount('L2', -1)">-</button>
-        <input type="number" id="L2" name="scoringLevelsL2" value="0" min="0" readonly>
-        <button type="button" class="counter-btn" onclick="updateCount('L2', 1)">+</button>
+      <label for="L2">L2 (12 levels)</label>
+      <div class="button-group">
+        <button type="button" onclick="adjustScore('L2', -1)">-</button>
+        <span class="score-value" id="L2Value">0</span>
+        <button type="button" onclick="adjustScore('L2', 1)">+</button>
       </div>
+    </div>
 
-      <label for="L3">L3</label>
-      <div class="counter-group">
-        <button type="button" class="counter-btn" onclick="updateCount('L3', -1)">-</button>
-        <input type="number" id="L3" name="scoringLevelsL3" value="0" min="0" readonly>
-        <button type="button" class="counter-btn" onclick="updateCount('L3', 1)">+</button>
-      </div>
+    <div class="form-group">
+      <label for="endgame">Endgame Action</label>
+      <select id="endgame" name="endgame" required>
+        <option value="">Select...</option>
+        <option value="Deep Climb">Deep Climb</option>
+        <option value="Shallow Climb">Shallow Climb</option>
+        <option value="Dock">Dock</option>
+        <option value="No Attempt">No Attempt</option>
+      </select>
+    </div>
 
-      <label for="L4">L4</label>
-      <div class="counter-group">
-        <button type="button" class="counter-btn" onclick="updateCount('L4', -1)">-</button>
-        <input
+    <div class="form-group">
+      <label for="notes">Additional Notes</label>
+      <textarea id="notes" name="notes" rows="4"></textarea>
+    </div>
+
+    <button type="submit">Submit Scouting Data</button>
+  </form>
+
+  <div class="thank-you hidden" id="thankYou">
+    <h2>Thank you for submitting!</h2>
+    <button onclick="startNewForm()">Submit Another Form</button>
+  </div>
+
+  <script>
+    const form = document.getElementById('scoutingForm');
+    const thankYou = document.getElementById('thankYou');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Send form data to Google Sheets (we'll handle that next)
+      const formData = new FormData(form);
+
+      fetch('https://script.google.com/macros/s/AKfycbyL7y4sax0xwCjesyIN6YVFhUmvdmJTBcK8Ef2tZFn-sdxzluaIiu8ygYBcC0rLjSFWDA/exec', {
+        method: 'POST',
+        body: formData
+      }).then(response => {
+        if (response.ok) {
+          form.classList.add('hidden');
+          thankYou.classList.remove('hidden');
+        } else {
+          alert('Submission failed!');
+        }
+      }).catch(err => {
+        alert('Error: ' + err);
+      });
+    });
+
+    function adjustScore(level, change) {
+      const scoreElement = document.getElementById(level + 'Value');
+      let score = parseInt(scoreElement.textContent);
+      score += change;
+      scoreElement.textContent = score < 0 ? 0 : score; // Prevent negative scores
+    }
+
+    function startNewForm() {
+      form.reset();
+      document.querySelectorAll('.score-value').forEach(el => el.textContent = '0');
+      thankYou.classList.add('hidden');
+      form.classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
