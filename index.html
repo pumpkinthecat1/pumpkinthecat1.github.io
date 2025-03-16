@@ -1,4 +1,121 @@
-<div class="form-group">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reefscape Scouting Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #00695c;
+    }
+    form, .thank-you {
+      background-color: #ffffff;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="number"], select, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #00796b;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #004d40;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>FRC Reefscape Scouting Form</h1>
+
+  <form id="scoutingForm">
+    <div class="form-group">
+      <label for="scoutName">Scout Name</label>
+      <input type="text" id="scoutName" name="scoutName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="matchNumber">Match Number</label>
+      <input type="number" id="matchNumber" name="matchNumber" required>
+    </div>
+
+    <div class="form-group">
+      <label for="teamNumber">Team Number</label>
+      <input type="number" id="teamNumber" name="teamNumber" required>
+    </div>
+
+    <div class="form-group">
+      <label for="autoCoral">Auto Coral Scored</label>
+      <input type="number" id="autoCoral" name="autoCoral" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label for="autoAlgae">Auto Algae Scored</label>
+      <input type="number" id="autoAlgae" name="autoAlgae" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label for="autoLeave">Auto Leave Starting Zone?</label>
+      <select id="autoLeave" name="autoLeave" required>
+        <option value="">Select...</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="teleopCoral">Teleop Coral Scored</label>
+      <input type="number" id="teleopCoral" name="teleopCoral" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label for="teleopAlgae">Teleop Algae Scored</label>
+      <input type="number" id="teleopAlgae" name="teleopAlgae" min="0" required>
+    </div>
+
+  <div class="form-group">
   <label>Scoring Levels</label>
   
   <label for="L1">L1 (24 checkboxes)</label>
@@ -31,7 +148,7 @@
       <label><input type="checkbox" name="scoringLevelsL1" value="L1_24"> 24</label>
     </div>
   </div>
-  
+
   <label for="L2">L2 (12 checkboxes)</label>
   <div class="checkbox-group">
     <!-- 12 checkboxes for L2 -->
@@ -75,4 +192,76 @@
     <!-- 12 checkboxes for L4 -->
     <div class="checkbox-row">
       <label><input type="checkbox" name="scoringLevelsL4" value="L4_1"> 1</label>
-      <
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_2"> 2</label>
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_3"> 3</label>
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_4"> 4</label>
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_5"> 5</label>
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_6"> 6</label>
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_7"> 7</label>
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_8"> 8</label>
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_9"> 9</label>
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_10"> 10</label>
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_11"> 11</label>
+      <label><input type="checkbox" name="scoringLevelsL4" value="L4_12"> 12</label>
+    </div>
+  </div>
+</div>
+    <div class="form-group">
+      <label for="endgame">Endgame Action</label>
+      <select id="endgame" name="endgame" required>
+        <option value="">Select...</option>
+        <option value="Deep Climb">Deep Climb</option>
+        <option value="Shallow Climb">Shallow Climb</option>
+        <option value="Dock">Dock</option>
+        <option value="No Attempt">No Attempt</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Additional Notes</label>
+      <textarea id="notes" name="notes" rows="4"></textarea>
+    </div>
+
+    <button type="submit">Submit Scouting Data</button>
+  </form>
+
+  <div class="thank-you hidden" id="thankYou">
+    <h2>Thank you for submitting!</h2>
+    <button onclick="startNewForm()">Submit Another Form</button>
+  </div>
+
+  <script>
+    const form = document.getElementById('scoutingForm');
+    const thankYou = document.getElementById('thankYou');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Send form data to Google Sheets (we'll handle that next)
+      const formData = new FormData(form);
+
+      fetch('https://script.google.com/macros/s/AKfycbyL7y4sax0xwCjesyIN6YVFhUmvdmJTBcK8Ef2tZFn-sdxzluaIiu8ygYBcC0rLjSFWDA/exec', {
+        method: 'POST',
+        body: formData
+      }).then(response => {
+        if (response.ok) {
+          form.classList.add('hidden');
+          thankYou.classList.remove('hidden');
+        } else {
+          alert('Submission failed!');
+        }
+      }).catch(err => {
+        alert('Error: ' + err);
+      });
+    });
+
+    function startNewForm() {
+      form.reset();
+      thankYou.classList.add('hidden');
+      form.classList.remove('hidden');
+    }
+  </script>
+
+
+</body>
+</html>
