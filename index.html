@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,24 +30,41 @@
       margin-bottom: 5px;
       font-weight: bold;
     }
-    input, select, textarea {
+    input[type="text"], input[type="number"], select, textarea {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border-radius: 5px;
       border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    select {
+      height: 50px;
     }
     .checkbox-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px;
     }
     .checkbox-group label {
-      font-weight: normal;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      min-width: 100px;
+      justify-content: center;
+      height: 50px;
+      font-size: 16px;
+    }
+    .checkbox-group input[type="checkbox"] {
+      margin-right: 8px;
+      transform: scale(1.2);
     }
     button {
       background-color: #00796b;
       color: #fff;
-      padding: 10px 20px;
+      padding: 12px 20px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -113,6 +129,7 @@
     <div class="form-group">
       <label>Scoring Levels</label>
       <div class="checkbox-group">
+        <label><input type="checkbox" name="scoringLevels" value="None"> None</label>
         <label><input type="checkbox" name="scoringLevels" value="L1"> L1</label>
         <label><input type="checkbox" name="scoringLevels" value="L2"> L2</label>
         <label><input type="checkbox" name="scoringLevels" value="L3"> L3</label>
@@ -124,9 +141,9 @@
       <label for="endgame">Endgame Action</label>
       <select id="endgame" name="endgame" required>
         <option value="">Select...</option>
-        <option value="Docked">Docked</option>
-        <option value="Parked">Parked</option>
-        <option value="Failed Attempt">Failed Attempt</option>
+        <option value="Deep Climb">Deep Climb</option>
+        <option value="Shallow Climb">Shallow Climb</option>
+        <option value="Dock">Dock</option>
         <option value="No Attempt">No Attempt</option>
       </select>
     </div>
