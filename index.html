@@ -160,7 +160,7 @@
       // Send form data to Google Sheets (we'll handle that next)
       const formData = new FormData(form);
 
-      fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+      fetch('https://script.google.com/macros/s/AKfycbyL7y4sax0xwCjesyIN6YVFhUmvdmJTBcK8Ef2tZFn-sdxzluaIiu8ygYBcC0rLjSFWDA/exec', {
         method: 'POST',
         body: formData
       }).then(response => {
