@@ -14,7 +14,7 @@
       text-align: center;
       color: #00695c;
     }
-    form {
+    form, .thank-you {
       background-color: #ffffff;
       max-width: 700px;
       margin: auto;
@@ -37,29 +37,16 @@
       border: 1px solid #ccc;
       font-size: 16px;
     }
-    select {
-      height: 50px;
-    }
     .checkbox-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 10px;
     }
     .checkbox-group label {
       display: flex;
       align-items: center;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-      min-width: 100px;
-      justify-content: center;
-      height: 50px;
+      gap: 5px;
       font-size: 16px;
-    }
-    .checkbox-group input[type="checkbox"] {
-      margin-right: 8px;
-      transform: scale(1.2);
     }
     button {
       background-color: #00796b;
@@ -74,14 +61,16 @@
     button:hover {
       background-color: #004d40;
     }
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
   <h1>FRC Reefscape Scouting Form</h1>
 
-  <form action="#" method="POST">
-    
+  <form id="scoutingForm">
     <div class="form-group">
       <label for="scoutName">Scout Name</label>
       <input type="text" id="scoutName" name="scoutName" required>
@@ -155,6 +144,43 @@
 
     <button type="submit">Submit Scouting Data</button>
   </form>
+
+  <div class="thank-you hidden" id="thankYou">
+    <h2>Thank you for submitting!</h2>
+    <button onclick="startNewForm()">Submit Another Form</button>
+  </div>
+
+  <script>
+    const form = document.getElementById('scoutingForm');
+    const thankYou = document.getElementById('thankYou');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Send form data to Google Sheets (we'll handle that next)
+      const formData = new FormData(form);
+
+      fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+        method: 'POST',
+        body: formData
+      }).then(response => {
+        if (response.ok) {
+          form.classList.add('hidden');
+          thankYou.classList.remove('hidden');
+        } else {
+          alert('Submission failed!');
+        }
+      }).catch(err => {
+        alert('Error: ' + err);
+      });
+    });
+
+    function startNewForm() {
+      form.reset();
+      thankYou.classList.add('hidden');
+      form.classList.remove('hidden');
+    }
+  </script>
 
 </body>
 </html>
