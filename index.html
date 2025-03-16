@@ -37,16 +37,31 @@
       border: 1px solid #ccc;
       font-size: 16px;
     }
-    .checkbox-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .checkbox-group label {
+    .counter-group {
       display: flex;
       align-items: center;
-      gap: 5px;
-      font-size: 16px;
+      gap: 10px;
+    }
+    .counter-btn {
+      background-color: #00796b;
+      color: white;
+      font-size: 18px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .counter-btn:hover {
+      background-color: #004d40;
+    }
+    input[type="number"] {
+      width: 60px;
+      padding: 8px;
+      text-align: center;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
     button {
       background-color: #00796b;
@@ -60,9 +75,6 @@
     }
     button:hover {
       background-color: #004d40;
-    }
-    .hidden {
-      display: none;
     }
   </style>
 </head>
@@ -115,153 +127,34 @@
       <input type="number" id="teleopAlgae" name="teleopAlgae" min="0" required>
     </div>
 
-  <div class="form-group">
-  <label>Scoring Levels</label>
-  
-  <label for="L1">L1 (24 checkboxes)</label>
-  <div class="checkbox-group">
-    <!-- 24 checkboxes for L1 -->
-    <div class="checkbox-row">
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_1"> 1</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_2"> 2</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_3"> 3</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_4"> 4</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_5"> 5</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_6"> 6</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_7"> 7</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_8"> 8</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_9"> 9</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_10"> 10</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_11"> 11</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_12"> 12</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_13"> 13</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_14"> 14</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_15"> 15</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_16"> 16</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_17"> 17</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_18"> 18</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_19"> 19</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_20"> 20</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_21"> 21</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_22"> 22</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_23"> 23</label>
-      <label><input type="checkbox" name="scoringLevelsL1" value="L1_24"> 24</label>
-    </div>
-  </div>
-
-  <label for="L2">L2 (12 checkboxes)</label>
-  <div class="checkbox-group">
-    <!-- 12 checkboxes for L2 -->
-    <div class="checkbox-row">
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_1"> 1</label>
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_2"> 2</label>
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_3"> 3</label>
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_4"> 4</label>
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_5"> 5</label>
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_6"> 6</label>
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_7"> 7</label>
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_8"> 8</label>
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_9"> 9</label>
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_10"> 10</label>
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_11"> 11</label>
-      <label><input type="checkbox" name="scoringLevelsL2" value="L2_12"> 12</label>
-    </div>
-  </div>
-
-  <label for="L3">L3 (12 checkboxes)</label>
-  <div class="checkbox-group">
-    <!-- 12 checkboxes for L3 -->
-    <div class="checkbox-row">
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_1"> 1</label>
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_2"> 2</label>
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_3"> 3</label>
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_4"> 4</label>
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_5"> 5</label>
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_6"> 6</label>
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_7"> 7</label>
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_8"> 8</label>
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_9"> 9</label>
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_10"> 10</label>
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_11"> 11</label>
-      <label><input type="checkbox" name="scoringLevelsL3" value="L3_12"> 12</label>
-    </div>
-  </div>
-
-  <label for="L4">L4 (12 checkboxes)</label>
-  <div class="checkbox-group">
-    <!-- 12 checkboxes for L4 -->
-    <div class="checkbox-row">
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_1"> 1</label>
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_2"> 2</label>
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_3"> 3</label>
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_4"> 4</label>
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_5"> 5</label>
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_6"> 6</label>
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_7"> 7</label>
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_8"> 8</label>
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_9"> 9</label>
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_10"> 10</label>
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_11"> 11</label>
-      <label><input type="checkbox" name="scoringLevelsL4" value="L4_12"> 12</label>
-    </div>
-  </div>
-</div>
     <div class="form-group">
-      <label for="endgame">Endgame Action</label>
-      <select id="endgame" name="endgame" required>
-        <option value="">Select...</option>
-        <option value="Deep Climb">Deep Climb</option>
-        <option value="Shallow Climb">Shallow Climb</option>
-        <option value="Dock">Dock</option>
-        <option value="No Attempt">No Attempt</option>
-      </select>
-    </div>
+      <label>Scoring Levels</label>
 
-    <div class="form-group">
-      <label for="notes">Additional Notes</label>
-      <textarea id="notes" name="notes" rows="4"></textarea>
-    </div>
+      <label for="None">None</label>
+      <input type="checkbox" id="None" name="scoringLevelsNone" value="None">
 
-    <button type="submit">Submit Scouting Data</button>
-  </form>
+      <label for="L1">L1</label>
+      <div class="counter-group">
+        <button type="button" class="counter-btn" onclick="updateCount('L1', -1)">-</button>
+        <input type="number" id="L1" name="scoringLevelsL1" value="0" min="0" readonly>
+        <button type="button" class="counter-btn" onclick="updateCount('L1', 1)">+</button>
+      </div>
 
-  <div class="thank-you hidden" id="thankYou">
-    <h2>Thank you for submitting!</h2>
-    <button onclick="startNewForm()">Submit Another Form</button>
-  </div>
+      <label for="L2">L2</label>
+      <div class="counter-group">
+        <button type="button" class="counter-btn" onclick="updateCount('L2', -1)">-</button>
+        <input type="number" id="L2" name="scoringLevelsL2" value="0" min="0" readonly>
+        <button type="button" class="counter-btn" onclick="updateCount('L2', 1)">+</button>
+      </div>
 
-  <script>
-    const form = document.getElementById('scoutingForm');
-    const thankYou = document.getElementById('thankYou');
+      <label for="L3">L3</label>
+      <div class="counter-group">
+        <button type="button" class="counter-btn" onclick="updateCount('L3', -1)">-</button>
+        <input type="number" id="L3" name="scoringLevelsL3" value="0" min="0" readonly>
+        <button type="button" class="counter-btn" onclick="updateCount('L3', 1)">+</button>
+      </div>
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      // Send form data to Google Sheets (we'll handle that next)
-      const formData = new FormData(form);
-
-      fetch('https://script.google.com/macros/s/AKfycbyL7y4sax0xwCjesyIN6YVFhUmvdmJTBcK8Ef2tZFn-sdxzluaIiu8ygYBcC0rLjSFWDA/exec', {
-        method: 'POST',
-        body: formData
-      }).then(response => {
-        if (response.ok) {
-          form.classList.add('hidden');
-          thankYou.classList.remove('hidden');
-        } else {
-          alert('Submission failed!');
-        }
-      }).catch(err => {
-        alert('Error: ' + err);
-      });
-    });
-
-    function startNewForm() {
-      form.reset();
-      thankYou.classList.add('hidden');
-      form.classList.remove('hidden');
-    }
-  </script>
-
-
-</body>
-</html>
+      <label for="L4">L4</label>
+      <div class="counter-group">
+        <button type="button" class="counter-btn" onclick="updateCount('L4', -1)">-</button>
+        <input
