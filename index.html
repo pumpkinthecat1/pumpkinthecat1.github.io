@@ -2,225 +2,142 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reefscape Scouting Form</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       background-color: #121212;
-      color: #f1f1f1;
+      color: white;
+      font-family: Arial, sans-serif;
       padding: 20px;
     }
-    h1 {
-      text-align: center;
-      color: #00e676;
-    }
-    form, .thank-you {
-      background-color: #1f1f1f;
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-      color: #bdbdbd;
-    }
-    input[type="text"], input[type="number"], select, textarea {
+    input, textarea, select {
       width: 100%;
-      padding: 12px;
-      border-radius: 5px;
-      border: 1px solid #444;
-      background-color: #333;
-      color: #f1f1f1;
-      font-size: 16px;
+      margin-bottom: 10px;
+      padding: 8px;
+      background-color: #1e1e1e;
+      color: white;
+      border: 1px solid #333;
     }
-    .button-group {
+    .counter {
       display: flex;
-      justify-content: center;
-      gap: 10px;
       align-items: center;
+      margin-bottom: 10px;
     }
-    .button-group button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #00796b;
+    .counter button {
+      margin: 0 10px;
+      padding: 5px 10px;
+      background-color: #333;
       color: white;
       border: none;
-      border-radius: 5px;
       cursor: pointer;
     }
-    .button-group button:hover {
-      background-color: #004d40;
-    }
-    .hidden {
-      display: none;
-    }
-    button {
-      background-color: #00796b;
+    button[type="submit"] {
+      padding: 10px;
+      background-color: #333;
       color: white;
-      padding: 12px 20px;
       border: none;
-      border-radius: 5px;
       cursor: pointer;
-      width: 100%;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #004d40;
-    }
-    .thank-you h2 {
-      color: #00e676;
-      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <h1>FRC Reefscape Scouting Form</h1>
+  <h1>Reefscape Scouting Form</h1>
 
   <form id="scoutingForm">
-    <div class="form-group">
-      <label for="scoutName">Scout Name</label>
-      <input type="text" id="scoutName" name="scoutName" required>
+    <label>Name</label>
+    <input type="text" name="name" required />
+
+    <label>Match Number</label>
+    <input type="number" name="matchNumber" required />
+
+    <label>Team Number</label>
+    <input type="number" name="teamNumber" required />
+
+    <label>Auto Algae Number</label>
+    <input type="number" name="autoAlgaeNumber" />
+
+    <label>Auto Coral Number</label>
+    <input type="number" name="autoCoralNumber" />
+
+    <label><input type="checkbox" name="autoLeave" /> Auto Leave</label><br>
+    <label><input type="checkbox" name="algaeClear" /> Algae Clear</label><br>
+
+    <h3>Teleop Coral</h3>
+    <div id="coralCounters">
+      ${['L1', 'L2', 'L3', 'L4', 'Dropped'].map(level => `
+        <div class="counter">
+          <label>${level}: </label>
+          <button type="button" onclick="decrement('${level}')">-</button>
+          <span id="${level}">0</span>
+          <button type="button" onclick="increment('${level}')">+</button>
+        </div>
+      `).join('')}
     </div>
 
-    <div class="form-group">
-      <label for="matchNumber">Match Number</label>
-      <input type="number" id="matchNumber" name="matchNumber" required>
-    </div>
-
-    <div class="form-group">
-      <label for="teamNumber">Team Number</label>
-      <input type="number" id="teamNumber" name="teamNumber" required>
-    </div>
-
-    <div class="form-group">
-      <label for="autoCoral">Auto Coral Scored</label>
-      <input type="number" id="autoCoral" name="autoCoral" min="0" required>
-    </div>
-
-    <div class="form-group">
-      <label for="autoAlgae">Auto Algae Scored</label>
-      <input type="number" id="autoAlgae" name="autoAlgae" min="0" required>
-    </div>
-
-    <div class="form-group">
-      <label for="autoLeave">Auto Leave Starting Zone?</label>
-      <select id="autoLeave" name="autoLeave" required>
-        <option value="">Select...</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="teleopAlgae">Teleop Algae Scored</label>
-      <input type="number" id="teleopAlgae" name="teleopAlgae" min="0" required>
-    </div>
-
-    <div class="form-group">
-      <label>Scoring Levels</label>
-
-      <label for="L1">L1</label>
-      <div class="button-group">
-        <button type="button" onclick="changeScore('L1', -1)">-</button>
-        <input type="number" id="L1" name="L1" value="0" readonly>
-        <button type="button" onclick="changeScore('L1', 1)">+</button>
+    <h3>Teleop Algae</h3>
+    ${['FloorHole', 'Barge'].map(id => `
+      <div class="counter">
+        <label>${id}: </label>
+        <button type="button" onclick="decrement('${id}')">-</button>
+        <span id="${id}">0</span>
+        <button type="button" onclick="increment('${id}')">+</button>
       </div>
+    `).join('')}
 
-      <label for="L2">L2</label>
-      <div class="button-group">
-        <button type="button" onclick="changeScore('L2', -1)">-</button>
-        <input type="number" id="L2" name="L2" value="0" readonly>
-        <button type="button" onclick="changeScore('L2', 1)">+</button>
-      </div>
+    <label>Climb?</label><br>
+    <label><input type="radio" name="climb" value="Shallow" /> Shallow</label>
+    <label><input type="radio" name="climb" value="Deep" /> Deep</label>
+    <label><input type="radio" name="climb" value="Park" /> Park</label>
+    <label><input type="radio" name="climb" value="Not Attempted" /> Not Attempted</label><br>
 
-      <label for="L3">L3</label>
-      <div class="button-group">
-        <button type="button" onclick="changeScore('L3', -1)">-</button>
-        <input type="number" id="L3" name="L3" value="0" readonly>
-        <button type="button" onclick="changeScore('L3', 1)">+</button>
-      </div>
+    <label><input type="checkbox" name="defenseBot" /> Defense Bot</label><br>
 
-      <label for="L4">L4</label>
-      <div class="button-group">
-        <button type="button" onclick="changeScore('L4', -1)">-</button>
-        <input type="number" id="L4" name="L4" value="0" readonly>
-        <button type="button" onclick="changeScore('L4', 1)">+</button>
-      </div>
+    <label>Notes</label>
+    <textarea name="notes" rows="4"></textarea>
 
-    </div>
-
-    <div class="form-group">
-      <label for="endgame">Endgame Action</label>
-      <select id="endgame" name="endgame" required>
-        <option value="">Select...</option>
-        <option value="Deep Climb">Deep Climb</option>
-        <option value="Shallow Climb">Shallow Climb</option>
-        <option value="Dock">Dock</option>
-        <option value="No Attempt">No Attempt</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="notes">Additional Notes</label>
-      <textarea id="notes" name="notes" rows="4"></textarea>
-    </div>
-
-    <button type="submit">Submit Scouting Data</button>
+    <button type="submit">Submit</button>
   </form>
 
-  <div class="thank-you hidden" id="thankYou">
-    <h2>Thank you for submitting!</h2>
-    <button onclick="startNewForm()">Submit Another Form</button>
-  </div>
-
   <script>
-    const form = document.getElementById('scoutingForm');
-    const thankYou = document.getElementById('thankYou');
+    const counters = { L1: 0, L2: 0, L3: 0, L4: 0, Dropped: 0, FloorHole: 0, Barge: 0 };
 
-    form.addEventListener('submit', function(e) {
+    function increment(id) {
+      counters[id]++;
+      document.getElementById(id).innerText = counters[id];
+    }
+
+    function decrement(id) {
+      if (counters[id] > 0) counters[id]--;
+      document.getElementById(id).innerText = counters[id];
+    }
+
+    document.getElementById('scoutingForm').addEventListener('submit', e => {
       e.preventDefault();
 
-      const formData = new FormData(form);
+      const formData = new FormData(e.target);
+      const data = {};
+      formData.forEach((value, key) => data[key] = value);
 
-      fetch('https://script.google.com/macros/s/AKfycbypNlj8SNSnh_7nd1qAWnBp-Q3vQKIJkYq0aZew4ZoLLfG6ZflllVhggoftr9dX48wvFg/exec', {
+      // Add counters
+      Object.keys(counters).forEach(key => data[key] = counters[key]);
+
+      // Send to Google Apps Script Web App
+      fetch('YOUR_GOOGLE_SCRIPT_DEPLOYED_URL', {
         method: 'POST',
-        body: formData
-      }).then(response => {
-        if (response.ok) {
-          form.classList.add('hidden');
-          thankYou.classList.remove('hidden');
-        } else {
-          alert('Submission failed!');
-        }
-      }).catch(err => {
-        alert('Error: ' + err);
+        mode: 'no-cors', // necessary for Google Apps Script
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(() => {
+        alert('Form submitted!');
+        e.target.reset();
+        Object.keys(counters).forEach(key => {
+          counters[key] = 0;
+          document.getElementById(key).innerText = '0';
+        });
       });
     });
-
-    function startNewForm() {
-      form.reset();
-      thankYou.classList.add('hidden');
-      form.classList.remove('hidden');
-    }
-
-    function changeScore(level, change) {
-      const input = document.getElementById(level);
-      let currentValue = parseInt(input.value);
-      currentValue += change;
-      if (currentValue >= 0) {
-        input.value = currentValue;
-      }
-    }
   </script>
-
 </body>
 </html>
