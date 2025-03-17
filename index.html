@@ -124,7 +124,7 @@
       Object.keys(counters).forEach(key => data[key] = counters[key]);
 
       // Send to Google Apps Script Web App
-      fetch('YOUR_GOOGLE_SCRIPT_DEPLOYED_URL', {
+      fetch('https://script.google.com/macros/s/AKfycbyTWLwXJdy0JFs6i-AP8iPrj86gNJHSPsXq_nazlrqO-YevvI88lfPI7BlulBTHGool/exec', {
         method: 'POST',
         mode: 'no-cors', // necessary for Google Apps Script
         headers: { 'Content-Type': 'application/json' },
