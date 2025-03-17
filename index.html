@@ -121,11 +121,6 @@
     </div>
 
     <div class="form-group">
-      <label for="teleopCoral">Teleop Coral Scored</label>
-      <input type="number" id="teleopCoral" name="teleopCoral" min="0" required>
-    </div>
-
-    <div class="form-group">
       <label for="teleopAlgae">Teleop Algae Scored</label>
       <input type="number" id="teleopAlgae" name="teleopAlgae" min="0" required>
     </div>
@@ -194,10 +189,9 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Send form data to Google Sheets (we'll handle that next)
       const formData = new FormData(form);
 
-      fetch('https://script.google.com/macros/s/AKfycbyBfa488MOHjXVdxC1F788rYvEdjefoHfBEeMKhRD2fdwrfeNEl8M9f68_WU-cgV4qEyw/exec', {
+      fetch('https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec', {
         method: 'POST',
         body: formData
       }).then(response => {
