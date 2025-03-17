@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submitted Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      padding: 20px;
+      text-align: center;
+    }
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: #1f1f1f;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 10px;
+    }
+    th {
+      background-color: #00796b;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Submitted Scouting Data</h1>
+
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem('submittedData'));
+    const tableBody = document.querySelector('#dataTable tbody');
+
+    if (data) {
+      Object.keys(data).forEach(key => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${key}</td><td>${data[key]}</td>`;
+        tableBody.appendChild(row);
+      });
+    } else {
+      tableBody.innerHTML = '<tr><td colspan="2">No data found!</td></tr>';
+    }
+  </script>
+
+</body>
+</html>
