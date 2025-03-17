@@ -221,7 +221,35 @@
          input.value = currentValue;
        }
      }
-   </script>
+   form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  const formObject = {};
+
+  // Convert FormData to object
+  formData.forEach((value, key) => {
+    formObject[key] = value;
+  });
+
+  // Save data locally in browser
+  localStorage.setItem('submittedData', JSON.stringify(formObject));
+
+  // Submit to Google Sheets (USE YOUR Google Apps Script URL)
+  fetch('https://script.google.com/macros/s/YOUR_SCRIPT_DEPLOYMENT_ID/exec', {
+    method: 'POST',
+    body: formData
+  }).then(response => {
+    if (response.ok) {
+      // Redirect to submitted.html after submit
+      window.location.href = 'submitted.html';
+    } else {
+      alert('Submission failed!');
+    }
+  }).catch(err => {
+    alert('Error: ' + err);
+  });
+});
  
  </body>
  </html>
