@@ -1,226 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reefscape Scouting Form</title>
+  <meta charset="UTF-8">
+  <title>Reefscape Scouting</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       background-color: #121212;
       color: #f1f1f1;
-      padding: 20px;
+      text-align: center;
+      padding-top: 100px;
+      font-family: Arial, sans-serif;
     }
     h1 {
-      text-align: center;
       color: #00e676;
     }
-    form, .thank-you {
-      background-color: #1f1f1f;
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
+    a.button {
+      display: inline-block;
+      padding: 15px 25px;
+      background-color: #00796b;
+      color: white;
+      text-decoration: none;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin-top: 30px;
+      font-size: 18px;
     }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-      color: #bdbdbd;
-    }
-    input[type="text"], input[type="number"], select, textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 5px;
-      border: 1px solid #444;
-      background-color: #333;
-      color: #f1f1f1;
-      font-size: 16px;
-    }
-    .button-group {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      align-items: center;
-    }
-    .button-group button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #00796b;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .button-group button:hover {
+    a.button:hover {
       background-color: #004d40;
-    }
-    .hidden {
-      display: none;
-    }
-    button {
-      background-color: #00796b;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #004d40;
-    }
-    .thank-you h2 {
-      color: #00e676;
-      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <h1>FRC Reefscape Scouting Form</h1>
+  <h1>Welcome to Reefscape Scouting</h1>
+  <p>Click below to begin scouting!</p>
 
-  <form id="scoutingForm">
-    <div class="form-group">
-      <label for="scoutName">Scout Name</label>
-      <input type="text" id="scoutName" name="scoutName" required>
-    </div>
-
-    <div class="form-group">
-      <label for="matchNumber">Match Number</label>
-      <input type="number" id="matchNumber" name="matchNumber" required>
-    </div>
-
-    <div class="form-group">
-      <label for="teamNumber">Team Number</label>
-      <input type="number" id="teamNumber" name="teamNumber" required>
-    </div>
-
-    <div class="form-group">
-      <label for="autoCoral">Auto Coral Scored</label>
-      <input type="number" id="autoCoral" name="autoCoral" min="0" required>
-    </div>
-
-    <div class="form-group">
-      <label for="autoAlgae">Auto Algae Scored</label>
-      <input type="number" id="autoAlgae" name="autoAlgae" min="0" required>
-    </div>
-
-    <div class="form-group">
-      <label for="autoLeave">Auto Leave Starting Zone?</label>
-      <select id="autoLeave" name="autoLeave" required>
-        <option value="">Select...</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="teleopAlgae">Teleop Algae Scored</label>
-      <input type="number" id="teleopAlgae" name="teleopAlgae" min="0" required>
-    </div>
-
-    <div class="form-group">
-      <label>Scoring Levels</label>
-
-      <label for="L1">L1</label>
-      <div class="button-group">
-        <button type="button" onclick="changeScore('L1', -1)">-</button>
-        <input type="number" id="L1" name="L1" value="0" readonly>
-        <button type="button" onclick="changeScore('L1', 1)">+</button>
-      </div>
-
-      <label for="L2">L2</label>
-      <div class="button-group">
-        <button type="button" onclick="changeScore('L2', -1)">-</button>
-        <input type="number" id="L2" name="L2" value="0" readonly>
-        <button type="button" onclick="changeScore('L2', 1)">+</button>
-      </div>
-
-      <label for="L3">L3</label>
-      <div class="button-group">
-        <button type="button" onclick="changeScore('L3', -1)">-</button>
-        <input type="number" id="L3" name="L3" value="0" readonly>
-        <button type="button" onclick="changeScore('L3', 1)">+</button>
-      </div>
-
-      <label for="L4">L4</label>
-      <div class="button-group">
-        <button type="button" onclick="changeScore('L4', -1)">-</button>
-        <input type="number" id="L4" name="L4" value="0" readonly>
-        <button type="button" onclick="changeScore('L4', 1)">+</button>
-      </div>
-
-    </div>
-
-    <div class="form-group">
-      <label for="endgame">Endgame Action</label>
-      <select id="endgame" name="endgame" required>
-        <option value="">Select...</option>
-        <option value="Deep Climb">Deep Climb</option>
-        <option value="Shallow Climb">Shallow Climb</option>
-        <option value="Dock">Dock</option>
-        <option value="No Attempt">No Attempt</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="notes">Additional Notes</label>
-      <textarea id="notes" name="notes" rows="4"></textarea>
-    </div>
-
-    <button type="submit">Submit Scouting Data</button>
-  </form>
-
-  <div class="thank-you hidden" id="thankYou">
-    <h2>Thank you for submitting!</h2>
-    <button onclick="startNewForm()">Submit Another Form</button>
-  </div>
-
-  <script>
-    const form = document.getElementById('scoutingForm');
-    const thankYou = document.getElementById('thankYou');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-
-      fetch('https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec', {
-        method: 'POST',
-        body: formData
-      }).then(response => {
-        if (response.ok) {
-          form.classList.add('hidden');
-          thankYou.classList.remove('hidden');
-        } else {
-          alert('Submission failed!');
-        }
-      }).catch(err => {
-        alert('Error: ' + err);
-      });
-    });
-
-    function startNewForm() {
-      form.reset();
-      thankYou.classList.add('hidden');
-      form.classList.remove('hidden');
-    }
-
-    function changeScore(level, change) {
-      const input = document.getElementById(level);
-      let currentValue = parseInt(input.value);
-      currentValue += change;
-      if (currentValue >= 0) {
-        input.value = currentValue;
-      }
-    }
-  </script>
+  <a href="form.html" class="button">Go to Scouting Form</a>
 
 </body>
 </html>
