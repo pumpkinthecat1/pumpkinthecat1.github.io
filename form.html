@@ -134,35 +134,36 @@
       </div>
     </div>
 
+    <!-- Separate buttons for L1, L2, L3, and L4 -->
     <div class="form-group">
       <label>Scoring Levels (L1, L2, L3, L4)</label>
 
       <label for="L1">L1</label>
       <div class="button-group">
-        <button type="button" onclick="changeScore('L1', -1)">-</button>
+        <button type="button" id="L1minus" onclick="changeScore('L1', -1)">L1 -</button>
         <input type="number" id="L1" name="L1" value="0" readonly>
-        <button type="button" onclick="changeScore('L1', 1)">+</button>
+        <button type="button" id="L1plus" onclick="changeScore('L1', 1)">L1 +</button>
       </div>
 
       <label for="L2">L2</label>
       <div class="button-group">
-        <button type="button" onclick="changeScore('L2', -1)">-</button>
+        <button type="button" id="L2minus" onclick="changeScore('L2', -1)">L2 -</button>
         <input type="number" id="L2" name="L2" value="0" readonly>
-        <button type="button" onclick="changeScore('L2', 1)">+</button>
+        <button type="button" id="L2plus" onclick="changeScore('L2', 1)">L2 +</button>
       </div>
 
       <label for="L3">L3</label>
       <div class="button-group">
-        <button type="button" onclick="changeScore('L3', -1)">-</button>
+        <button type="button" id="L3minus" onclick="changeScore('L3', -1)">L3 -</button>
         <input type="number" id="L3" name="L3" value="0" readonly>
-        <button type="button" onclick="changeScore('L3', 1)">+</button>
+        <button type="button" id="L3plus" onclick="changeScore('L3', 1)">L3 +</button>
       </div>
 
       <label for="L4">L4</label>
       <div class="button-group">
-        <button type="button" onclick="changeScore('L4', -1)">-</button>
+        <button type="button" id="L4minus" onclick="changeScore('L4', -1)">L4 -</button>
         <input type="number" id="L4" name="L4" value="0" readonly>
-        <button type="button" onclick="changeScore('L4', 1)">+</button>
+        <button type="button" id="L4plus" onclick="changeScore('L4', 1)">L4 +</button>
       </div>
     </div>
 
