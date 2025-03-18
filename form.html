@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #121212; /* Entire page background set to black */
+      background-color: #121212;
       color: #f1f1f1;
       padding: 20px;
     }
@@ -16,7 +16,7 @@
       color: #00e676;
     }
     form, .thank-you {
-      background-color: #121212; /* Black background for the form */
+      background-color: #121212;
       max-width: 700px;
       margin: auto;
       padding: 20px;
@@ -37,7 +37,7 @@
       padding: 12px;
       border-radius: 5px;
       border: 1px solid #444;
-      background-color: #333; /* Dark background for the form inputs */
+      background-color: #333;
       color: #f1f1f1;
       font-size: 16px;
     }
@@ -99,6 +99,16 @@
     <div class="form-group">
       <label for="teamNumber">Team Number</label>
       <input type="number" id="teamNumber" name="teamNumber" required>
+    </div>
+
+    <!-- Replaced Auto Coral with +/- button system -->
+    <div class="form-group">
+      <label>Auto Coral Scored</label>
+      <div class="button-group">
+        <button type="button" onclick="changeScore('autoCoral', -1)">-</button>
+        <input type="number" id="autoCoral" name="autoCoral" value="0" readonly>
+        <button type="button" onclick="changeScore('autoCoral', 1)">+</button>
+      </div>
     </div>
 
     <div class="form-group">
