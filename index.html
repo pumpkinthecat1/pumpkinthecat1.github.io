@@ -1,40 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Reefscape Scouting</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reefscape Scouting Form</title>
   <style>
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #121212;
       color: #f1f1f1;
       text-align: center;
-      padding-top: 100px;
-      font-family: Arial, sans-serif;
+      padding: 50px;
     }
     h1 {
+      font-size: 4rem;
       color: #00e676;
+      text-shadow: 3px 3px #004d40;
+      margin-bottom: 20px;
     }
-    a.button {
-      display: inline-block;
-      padding: 15px 25px;
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      font-weight: 300;
+      color: #bdbdbd;
+    }
+    .nav-button {
+      padding: 15px 30px;
+      font-size: 1.3rem;
       background-color: #00796b;
       color: white;
-      text-decoration: none;
+      border: none;
       border-radius: 10px;
-      margin-top: 30px;
-      font-size: 18px;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 10px;
+      display: inline-block;
     }
-    a.button:hover {
+    .nav-button:hover {
+      background-color: #004d40;
+    }
+    .cta-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .cta-container a {
+      padding: 15px 30px;
+      font-size: 1.3rem;
+      background-color: #00796b;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 10px;
+    }
+    .cta-container a:hover {
       background-color: #004d40;
     }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to Reefscape Scouting</h1>
-  <p>Click below to begin scouting!</p>
+  <h1>Welcome to Reefscape Scouting!</h1>
+  <p>Your one-stop solution for FRC scouting</p>
 
-  <a href="form.html" class="button">Go to Scouting Form</a>
+  <div class="cta-container">
+    <a href="form.html" class="nav-button">Start Scouting Form</a>
+  </div>
 
 </body>
 </html>
