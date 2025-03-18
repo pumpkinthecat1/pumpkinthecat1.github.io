@@ -9,62 +9,84 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #121212;
       color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 50px;
     }
+
+    .container {
+      background-color: #1f1f1f;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      width: 100%;
+    }
+
     h1 {
       font-size: 4rem;
       color: #00e676;
-      text-shadow: 3px 3px #004d40;
       margin-bottom: 20px;
+      text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
     }
+
     p {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+      color: #bdbdbd;
       margin-bottom: 40px;
       font-weight: 300;
-      color: #bdbdbd;
     }
-    .nav-button {
-      padding: 15px 30px;
-      font-size: 1.3rem;
-      background-color: #00796b;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      text-decoration: none;
-      margin: 10px;
-      display: inline-block;
-    }
-    .nav-button:hover {
-      background-color: #004d40;
-    }
+
     .cta-container {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
       margin-top: 30px;
     }
+
     .cta-container a {
-      padding: 15px 30px;
+      padding: 18px 30px;
       font-size: 1.3rem;
       background-color: #00796b;
       color: white;
       border-radius: 10px;
-      cursor: pointer;
       text-decoration: none;
-      margin: 10px;
+      display: inline-block;
+      transition: background-color 0.3s ease;
     }
+
     .cta-container a:hover {
       background-color: #004d40;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.4rem;
+      }
+
+      .cta-container a {
+        padding: 15px 25px;
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to Reefscape Scouting!</h1>
-  <p>Your one-stop solution for FRC scouting</p>
-
-  <div class="cta-container">
-    <a href="form.html" class="nav-button">Start Scouting Form</a>
+  <div class="container">
+    <h1>Welcome to Reefscape Scouting!</h1>
+    <p>Your one-stop solution for FRC scouting. Track, record, and analyze your team's performance with ease.</p>
+    <div class="cta-container">
+      <a href="form.html">Start Scouting Form</a>
+    </div>
   </div>
 
 </body>
