@@ -187,11 +187,13 @@
     <button onclick="startNewForm()">Submit Another Form</button>
 
     <!-- Back to Home button on Thank You screen -->
-    <div style="margin-top: 10px;">
-      <a href="index.html" style="display:inline-block; padding:10px 20px; background-color:#00796b; color:white; border-radius:5px; text-decoration:none;">Back to Home</a>
-    </div>
+ <div class="thank-you hidden" id="thankYou">
+  <h2>Thank you for submitting!</h2>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;">
+    <button onclick="startNewForm()">Submit Another Form</button>
+    <button onclick="window.location.href='index.html'">Back to Home</button>
   </div>
-
+</div>
   <script>
     const form = document.getElementById('scoutingForm');
     const thankYou = document.getElementById('thankYou');
