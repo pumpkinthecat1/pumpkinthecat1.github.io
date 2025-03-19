@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Match Data</title>
+  <style>
+    body { background-color: #121212; color: #f1f1f1; font-family: Arial; padding: 20px; }
+    h1 { text-align: center; color: #00e676; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #444; padding: 10px; text-align: center; }
+    th { background-color: #00796b; }
+  </style>
+</head>
+<body>
+  <h1>FRC Match Data</h1>
+  <table id="matchTable">
+    <thead>
+      <tr>
+        <th>Match</th>
+        <th>Red Alliance</th>
+        <th>Blue Alliance</th>
+        <th>Winner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Match data will be inserted here -->
+    </tbody>
+  </table>
+
+  <script>
+    const apiKey = 'zXNysmhx6XDhUnbfmEsYHSb6sLjwuyK1LdbCYsV3vKftbquuWVEWgWSygqOltrY7'; // Replace this
+    const eventKey = '2025wabon'; // Example event key; replace with your event
+
+    fetch(`https://www.thebluealliance.com/api/v3/event/${eventKey}/matches`, {
+      headers: {
+        'X-TBA-Auth-Key': apiKey
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      const table = document.getElementById('matchTable').getElementsByTagName('tbody')[0];
+      data.forEach(match => {
+        const row = table.insertRow();
+        row.insertCell(0).innerText = match.match_number;
+        row.insertCell(1).innerText = match.alliances.red.team_keys.join(', ').replace(/frc/g, '');
+        row.insertCell(2).innerText = match.alliances.blue.team_keys.join(', ').replace(/frc/g, '');
+        row.insertCell(3).innerText = match.winning_alliance || 'N/A';
+      });
+    })
+    .catch(error => console.error('Error fetching match data:', error));
+  </script>
+</body>
+</html>
