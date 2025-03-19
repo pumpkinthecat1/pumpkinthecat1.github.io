@@ -32,6 +32,14 @@
     .matches tr:nth-child(even) {
       background-color: #1e1e1e;
     }
+    .red-alliance {
+      background-color: #b71c1c;
+      color: white;
+    }
+    .blue-alliance {
+      background-color: #0d47a1;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -80,10 +88,12 @@
 
         const redAllianceCell = document.createElement('td');
         redAllianceCell.textContent = match.alliances.red.team_keys.join(', ').replace(/frc/g, '');
+        redAllianceCell.classList.add('red-alliance');
         row.appendChild(redAllianceCell);
 
         const blueAllianceCell = document.createElement('td');
         blueAllianceCell.textContent = match.alliances.blue.team_keys.join(', ').replace(/frc/g, '');
+        blueAllianceCell.classList.add('blue-alliance');
         row.appendChild(blueAllianceCell);
 
         matchTableBody.appendChild(row);
