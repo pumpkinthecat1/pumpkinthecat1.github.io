@@ -1,54 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Match Data</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upcoming Matches - FRC Scouting</title>
   <style>
-    body { background-color: #121212; color: #f1f1f1; font-family: Arial; padding: 20px; }
-    h1 { text-align: center; color: #00e676; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #444; padding: 10px; text-align: center; }
-    th { background-color: #00796b; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      padding: 20px;
+    }
+    h1 {
+      color: #00e676;
+      text-align: center;
+    }
+    .matches {
+      max-width: 800px;
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .matches th, .matches td {
+      border: 1px solid #444;
+      padding: 12px;
+      text-align: center;
+    }
+    .matches th {
+      background-color: #333;
+    }
+    .matches tr:nth-child(even) {
+      background-color: #1e1e1e;
+    }
   </style>
 </head>
 <body>
-  <h1>FRC Match Data</h1>
-  <table id="matchTable">
+
+  <h1>Upcoming Matches</h1>
+  <table class="matches">
     <thead>
       <tr>
-        <th>Match</th>
+        <th>Match Number</th>
+        <th>Time</th>
         <th>Red Alliance</th>
         <th>Blue Alliance</th>
-        <th>Winner</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="matchTableBody">
       <!-- Match data will be inserted here -->
     </tbody>
   </table>
 
   <script>
-    const apiKey = 'zXNysmhx6XDhUnbfmEsYHSb6sLjwuyK1LdbCYsV3vKftbquuWVEWgWSygqOltrY7'; // Replace this
-    const eventKey = '2025wabon'; // Example event key; replace with your event
+    const eventKey = '2025waamv'; // Replace with your event key
+    const apiKey = 'YOUR_TBA_API_KEY'; // Replace with your TBA API key
 
-    fetch(`https://www.thebluealliance.com/api/v3/event/${eventKey}/matches`, {
+    fetch(`https://www.thebluealliance.com/api/v3/event/${eventKey}/matches/simple`, {
       headers: {
         'X-TBA-Auth-Key': apiKey
       }
     })
     .then(response => response.json())
     .then(data => {
-      const table = document.getElementById('matchTable').getElementsByTagName('tbody')[0];
-      data.forEach(match => {
-        const row = table.insertRow();
-        row.insertCell(0).innerText = match.match_number;
-        row.insertCell(1).innerText = match.alliances.red.team_keys.join(', ').replace(/frc/g, '');
-        row.insertCell(2).innerText = match.alliances.blue.team_keys.join(', ').replace(/frc/g, '');
-        row.insertCell(3).innerText = match.winning_alliance || 'N/A';
+      const upcomingMatches = data.filter(match => match.actual_time === null); // Filter upcoming matches
+      upcomingMatches.sort((a, b) => a.predicted_time - b.predicted_time); // Sort by predicted time
+
+      const matchTableBody = document.getElementById('matchTableBody');
+      upcomingMatches.forEach(match => {
+        const row = document.createElement('tr');
+
+        const matchNumberCell = document.createElement('td');
+        matchNumberCell.textContent = match.match_number;
+        row.appendChild(matchNumberCell);
+
+        const timeCell = document.createElement('td');
+        const matchTime = new Date(match.predicted_time * 1000);
+        timeCell.textContent = matchTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        row.appendChild(timeCell);
+
+        const redAllianceCell = document.createElement('td');
+        redAllianceCell.textContent = match.alliances.red.team_keys.join(', ').replace(/frc/g, '');
+        row.appendChild(redAllianceCell);
+
+        const blueAllianceCell = document.createElement('td');
+        blueAllianceCell.textContent = match.alliances.blue.team_keys.join(', ').replace(/frc/g, '');
+        row.appendChild(blueAllianceCell);
+
+        matchTableBody.appendChild(row);
       });
     })
     .catch(error => console.error('Error fetching match data:', error));
   </script>
+
 </body>
 </html>
