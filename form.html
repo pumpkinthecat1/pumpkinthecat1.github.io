@@ -31,6 +31,7 @@
       margin-bottom: 5px;
       font-weight: bold;
       color: #bdbdbd;
+      text-align: center;
     }
     input[type="text"], input[type="number"], select, textarea {
       width: 100%;
@@ -40,6 +41,8 @@
       background-color: #333;
       color: #f1f1f1;
       font-size: 16px;
+      text-align: center;
+      font-weight: bold;
     }
     .button-group {
       display: flex;
@@ -102,43 +105,43 @@
     </div>
     
     <div class="form-group">
-  <label>Auto Coral Scored</label>
+      <label>Auto Coral Scored</label>
 
-  <label for="L1">L1</label>
-  <div class="button-group">
-    <button type="button" onclick="changeScore('L1', -1)">L1 -</button>
-    <input type="number" id="L1" name="L1" value="0" readonly>
-    <button type="button" onclick="changeScore('L1', 1)">L1 +</button>
-  </div>
+      <label for="L1">L1</label>
+      <div class="button-group">
+        <button type="button" onclick="changeScore('L1', -1)">L1 -</button>
+        <input type="number" id="L1" name="L1" value="0" readonly>
+        <button type="button" onclick="changeScore('L1', 1)">L1 +</button>
+      </div>
 
-  <label for="L2">L2</label>
-  <div class="button-group">
-    <button type="button" onclick="changeScore('L2', -1)">L2 -</button>
-    <input type="number" id="L2" name="L2" value="0" readonly>
-    <button type="button" onclick="changeScore('L2', 1)">L2 +</button>
-  </div>
+      <label for="L2">L2</label>
+      <div class="button-group">
+        <button type="button" onclick="changeScore('L2', -1)">L2 -</button>
+        <input type="number" id="L2" name="L2" value="0" readonly>
+        <button type="button" onclick="changeScore('L2', 1)">L2 +</button>
+      </div>
 
-  <label for="L3">L3</label>
-  <div class="button-group">
-    <button type="button" onclick="changeScore('L3', -1)">L3 -</button>
-    <input type="number" id="L3" name="L3" value="0" readonly>
-    <button type="button" onclick="changeScore('L3', 1)">L3 +</button>
-  </div>
+      <label for="L3">L3</label>
+      <div class="button-group">
+        <button type="button" onclick="changeScore('L3', -1)">L3 -</button>
+        <input type="number" id="L3" name="L3" value="0" readonly>
+        <button type="button" onclick="changeScore('L3', 1)">L3 +</button>
+      </div>
 
-  <label for="L4">L4</label>
-  <div class="button-group">
-    <button type="button" onclick="changeScore('L4', -1)">L4 -</button>
-    <input type="number" id="L4" name="L4" value="0" readonly>
-    <button type="button" onclick="changeScore('L4', 1)">L4 +</button>
-  </div>
-</div>
+      <label for="L4">L4</label>
+      <div class="button-group">
+        <button type="button" onclick="changeScore('L4', -1)">L4 -</button>
+        <input type="number" id="L4" name="L4" value="0" readonly>
+        <button type="button" onclick="changeScore('L4', 1)">L4 +</button>
+      </div>
+    </div>
 
- <div class="form-group">
+    <div class="form-group">
       <label>Auto Algae Scored</label>
       <div class="button-group">
-        <button type="button" onclick="changeScore('algae', -1)">-</button>
-        <input type="number" id="algae" name="algae" value="0" readonly>
-        <button type="button" onclick="changeScore('algae', 1)">+</button>
+        <button type="button" onclick="changeScore('autoAlgae', -1)">-</button>
+        <input type="number" id="autoAlgae" name="autoAlgae" value="0" readonly>
+        <button type="button" onclick="changeScore('autoAlgae', 1)">+</button>
       </div>
     </div>
 
@@ -160,9 +163,8 @@
       </div>
     </div>
 
-    <!-- Separate buttons for L1, L2, L3, and L4 -->
     <div class="form-group">
-      <label>Telop Coral Scored</label>
+      <label>Teleop Coral Scored</label>
 
       <label for="L1">L1</label>
       <div class="button-group">
@@ -211,7 +213,6 @@
 
     <button type="submit">Submit Scouting Data</button>
 
-    <!-- Back to Home button on form page -->
     <div style="text-align:center; margin-top: 10px;">
       <a href="index.html" style="display:inline-block; padding:10px 20px; background-color:#00796b; color:white; border-radius:5px; text-decoration:none;">Back to Home</a>
     </div>
@@ -234,7 +235,7 @@
 
       const formData = new FormData(form);
 
-      fetch('https://script.google.com/macros/s/AKfycbyoV1PBoRWSgkwxhs0Wm1t5Czlj4cqhU5dV2s-gy3j9gu9kYM2PMLzFFocWIz6ANm-Eeg/exec', {
+      fetch('YOUR_SCRIPT_URL_HERE', {
         method: 'POST',
         body: formData
       }).then(response => {
