@@ -24,14 +24,14 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      text-align: center;
     }
     label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       font-weight: bold;
-      color: #bdbdbd;
-      text-align: center;
+      color: #ffffff;
     }
     input[type="text"], input[type="number"], select, textarea {
       width: 100%;
@@ -39,16 +39,16 @@
       border-radius: 5px;
       border: 1px solid #444;
       background-color: #333;
-      color: #f1f1f1;
-      font-size: 16px;
-      text-align: center;
+      color: #ffffff;
       font-weight: bold;
+      font-size: 16px;
     }
     .button-group {
       display: flex;
       justify-content: center;
       gap: 10px;
       align-items: center;
+      margin-bottom: 15px;
     }
     .button-group button {
       padding: 10px 20px;
@@ -166,32 +166,32 @@
     <div class="form-group">
       <label>Teleop Coral Scored</label>
 
-      <label for="L1">L1</label>
+      <label for="L1Tele">L1</label>
       <div class="button-group">
-        <button type="button" id="L1minus" onclick="changeScore('L1', -1)">L1 -</button>
-        <input type="number" id="L1" name="L1" value="0" readonly>
-        <button type="button" id="L1plus" onclick="changeScore('L1', 1)">L1 +</button>
+        <button type="button" onclick="changeScore('L1Tele', -1)">L1 -</button>
+        <input type="number" id="L1Tele" name="L1Tele" value="0" readonly>
+        <button type="button" onclick="changeScore('L1Tele', 1)">L1 +</button>
       </div>
 
-      <label for="L2">L2</label>
+      <label for="L2Tele">L2</label>
       <div class="button-group">
-        <button type="button" id="L2minus" onclick="changeScore('L2', -1)">L2 -</button>
-        <input type="number" id="L2" name="L2" value="0" readonly>
-        <button type="button" id="L2plus" onclick="changeScore('L2', 1)">L2 +</button>
+        <button type="button" onclick="changeScore('L2Tele', -1)">L2 -</button>
+        <input type="number" id="L2Tele" name="L2Tele" value="0" readonly>
+        <button type="button" onclick="changeScore('L2Tele', 1)">L2 +</button>
       </div>
 
-      <label for="L3">L3</label>
+      <label for="L3Tele">L3</label>
       <div class="button-group">
-        <button type="button" id="L3minus" onclick="changeScore('L3', -1)">L3 -</button>
-        <input type="number" id="L3" name="L3" value="0" readonly>
-        <button type="button" id="L3plus" onclick="changeScore('L3', 1)">L3 +</button>
+        <button type="button" onclick="changeScore('L3Tele', -1)">L3 -</button>
+        <input type="number" id="L3Tele" name="L3Tele" value="0" readonly>
+        <button type="button" onclick="changeScore('L3Tele', 1)">L3 +</button>
       </div>
 
-      <label for="L4">L4</label>
+      <label for="L4Tele">L4</label>
       <div class="button-group">
-        <button type="button" id="L4minus" onclick="changeScore('L4', -1)">L4 -</button>
-        <input type="number" id="L4" name="L4" value="0" readonly>
-        <button type="button" id="L4plus" onclick="changeScore('L4', 1)">L4 +</button>
+        <button type="button" onclick="changeScore('L4Tele', -1)">L4 -</button>
+        <input type="number" id="L4Tele" name="L4Tele" value="0" readonly>
+        <button type="button" onclick="changeScore('L4Tele', 1)">L4 +</button>
       </div>
     </div>
 
@@ -235,7 +235,7 @@
 
       const formData = new FormData(form);
 
-      fetch('YOUR_SCRIPT_URL_HERE', {
+      fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
         method: 'POST',
         body: formData
       }).then(response => {
